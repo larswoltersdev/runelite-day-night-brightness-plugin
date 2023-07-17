@@ -8,17 +8,6 @@ import net.runelite.client.config.ConfigItem;
 public interface DayNightBrightnessConfig extends Config
 {
 	@ConfigItem(
-		keyName = "loginMessageEnabled",
-		name = "Enable Login Message",
-		description = "Enable the login message",
-		position = 1
-	)
-	default boolean loginMessageEnabled()
-	{
-		return true;
-	}
-
-	@ConfigItem(
 		keyName = "dayBrightnessValue",
 		name = "Day Time Brightness",
 		description = "The day time brightness value (0 = darkest, 30 = brightest)",
