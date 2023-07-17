@@ -21,9 +21,6 @@ import java.time.LocalTime;
 )
 public class DayNightBrightnessPlugin extends Plugin
 {
-	private static final String DAY_MESSAGE = "It's a beautiful day with a cloudless sky.";
-	private static final String NIGHT_MESSAGE = "It's a beautiful night with a sky full of stars.";
-
 	@Inject
 	private Client client;
 
@@ -59,26 +56,9 @@ public class DayNightBrightnessPlugin extends Plugin
 
 	public void setClientBrightness(LocalTime currentTime) {
 		if (currentTime.isAfter(LocalTime.of(config.dayHour(), 0)) && currentTime.isBefore(LocalTime.of(config.nightHour(), 0))) {
-			setDayBrightness();
+			client.runScript(3966, 15, config.dayBrightness());
 		} else {
-			setNightBrightness();
-		}
-	}
-
-	public void setDayBrightness() {
-		client.runScript(3966, 15, config.dayBrightness());
-		sendChatMessage(DAY_MESSAGE);
-	}
-
-	public void setNightBrightness() {
-		client.runScript(3966, 15, config.nightBrightness());
-		sendChatMessage(NIGHT_MESSAGE);
-	}
-
-	private void sendChatMessage(String chatMessage)
-	{
-		if (config.loginMessageEnabled()) {
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", chatMessage, null);
+			client.runScript(3966, 15, config.nightBrightness());
 		}
 	}
 }

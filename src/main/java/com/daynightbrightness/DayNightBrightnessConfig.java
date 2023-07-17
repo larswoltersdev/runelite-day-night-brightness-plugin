@@ -59,6 +59,6 @@ public interface DayNightBrightnessConfig extends Config
 	)
 	default int nightHour()
 	{
-		return 18;
+		return 22;
 	}
 }
